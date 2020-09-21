@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" (click)="onNotify()">
+      <ion-icon name="notifications-outline" slot="end"></ion-icon>
+    </ion-buttons>
+    <ion-title>user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+   
+    <ng-container matColumnDef="user_name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element" style="width: 40%;"> {{element.name}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="words_count">
+      <th mat-header-cell *matHeaderCellDef> No Of Words </th>
+      <td mat-cell *matCellDef="let element"  style="width: 20%;"> {{element.words_count}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="Average_rating">
+      <th mat-header-cell *matHeaderCellDef> Average Rating </th>
+      <td mat-cell *matCellDef="let element"  style="width: 20%;"> {{element.average_rating | number : '1.2-2'}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element"  style="width: 20%;"> <ion-icon name="arrow-forward-outline" (click)="onViewMore(element.user_id)" style="width: 100%;"></ion-icon> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> 
+  
+  
+  <!-- <ion-grid *ngFor="let item of arr" style="border-bottom: 1px solid black;">
+    <ion-row>
+      <ion-col col-8>
+        {{item.name}}
+      </ion-col>
+      <ion-col >
+        {{item.words_count}}
+      </ion-col>
+      <ion-col >
+        {{item.average_rating | number : '1.2-2'}}
+      </ion-col>
+      <ion-col>
+        +
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>

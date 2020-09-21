@@ -1,0 +1,24 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="content">  
+    
+    <div>
+      <ion-list>
+        <ion-list-header>
+      
+        </ion-list-header>
+        <ion-item *ngIf="user_id==0" (click)="loginClicked()">Login</ion-item>
+        <ion-item  *ngIf="user_id!=0" >profile</ion-item>
+        <ion-item *ngIf="user_id!=0" (click)="OnUser()" >Manage User</ion-item>
+        
+        
+        <ion-item *ngIf="user_id!=0" (click)="onClickWord()">Manage Word</ion-item>
+        
+        <ion-item *ngIf="user_id!=0" (click)="logoutClicked()">Logout</ion-item>
+      </ion-list>
+    </div>
+    
+
+
+  </ion-menu>     
+  <ion-router-outlet Id="content"></ion-router-outlet>
+</ion-app>

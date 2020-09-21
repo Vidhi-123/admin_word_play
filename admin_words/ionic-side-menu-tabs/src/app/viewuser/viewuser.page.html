@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end">
+    <ion-icon name="notifications-outline" slot="end" (click)="onNotify()"></ion-icon>
+  </ion-buttons>
+    <ion-title>viewuser</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style=" margin-top: 10%;" >
+    <ion-card-header>
+  
+      <ion-card-subtitle>User Information</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content >
+      
+     <h2 style="color:black;font-size: large;" *ngIf="arr.length>0">Name:{{arr[0].name}}</h2>
+     <h2 style="color:black;font-size: large;" *ngIf="arr.length>0">BirthDate:{{arr[0].date_of_birth | date}}</h2>
+     <h2 style="color:black;font-size: large;" *ngIf="arr.length>0">email:{{arr[0].email_id}}</h2>
+     <h2 style="color:black;font-size: large;" *ngIf="arr.length>0">Type:{{arr[0].type}}</h2>
+     <h2 style="color:black;font-size: large" *ngIf="arr.length>0">Coin:{{arr[0].coins}}</h2>
+
+      
+     <button mat-raised-button color="primary" *ngIf="arr.length>0" [disabled]="arr[0].is_enabled==0" (click)="onDisable()">Disable USer</button>
+
+     
+
+
+  </ion-card-content>
+
+
+
+
+
+  </ion-card>
+
+
+
+
+
+
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+   
+    <ng-container matColumnDef="word_name">
+      <th mat-header-cell *matHeaderCellDef> Word Name </th>
+      <td mat-cell *matCellDef="let element" style="width: 40%;"> {{element.word_name}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="average_rating">
+      <th mat-header-cell *matHeaderCellDef> Avg rating </th>
+      <td mat-cell *matCellDef="let element"  style="width: 20%;"> {{element.average_rating}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="rater_count">
+      <th mat-header-cell *matHeaderCellDef> Rater Count </th>
+      <td mat-cell *matCellDef="let element"  style="width: 20%;"> {{element.rater_count}} </td>
+    </ng-container>
+  
+   
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> 
+
+</ion-content>
